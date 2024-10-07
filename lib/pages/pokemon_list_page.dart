@@ -11,7 +11,7 @@ class PokemonListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Pokémon List'),
+        title: const Text('Pokedex'),
         actions: [
           IconButton(
             icon: const Icon(Icons.list),
@@ -147,6 +147,7 @@ class _PokemonListViewState extends State<PokemonListView> {
 
                       return ListTile(
                         title: Text(pokemon.name),
+                        leading: Image.network(pokemon.image),
                         trailing: isCaptured
                             ? const Icon(Icons.check, color: Colors.green)
                             : const Icon(Icons.add, color: Colors.grey),
