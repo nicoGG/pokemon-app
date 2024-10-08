@@ -3,6 +3,22 @@
 
 Esta es una aplicación móvil de Pokémon que permite a los usuarios capturar, liberar y gestionar Pokémon. La app está desarrollada con Flutter y utiliza la arquitectura basada en `Cubit` para el manejo de estados. A continuación, se describen las principales pantallas de la aplicación y sus características.
 
+
+## Capturas de Pantalla
+
+### Inicio de sesión
+<img src="./images/login.png" alt="Pantalla de Inicio" width="300"/>
+
+### Pantalla de Inicio
+<img src="./images/selection.png" alt="Pantalla de Inicio" width="300"/>
+
+
+### Captura de Pokémon
+<img src="./images/capture.png" alt="Pantalla de Inicio" width="300"/>
+
+## Video de Funcionamiento
+![Video de la app](./images/app-demo.gif)
+
 ## Funcionalidades principales
 
 - Captura y liberación de Pokémon.
