@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import '../providers/login_provider.dart';
+import '../../../providers/login_provider.dart';
 
 part 'login_state.dart';
 

@@ -23,9 +23,9 @@ class Pokemon {
     return Pokemon(
       id: json['id'],
       name: json['name'],
-      types: List<String>.from(json['types']),
       image: json['image'],
       captured: json['captured'],
+      types: (json['types'] as String).split(','),
       captureDate: json['captureDate'] != null
           ? DateTime.parse(json['captureDate'])
           : null,

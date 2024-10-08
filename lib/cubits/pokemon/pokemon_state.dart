@@ -4,7 +4,9 @@ abstract class PokemonState {}
 
 class PokemonInitial extends PokemonState {}
 
-class PokemonLoading extends PokemonState {}
+class PokemonListLoading extends PokemonState {}
+
+class PokemonTypesLoading extends PokemonState {}
 
 class PokemonLoaded extends PokemonState {
   final List<Pokemon> pokemons;
@@ -18,6 +20,12 @@ class PokemonLoaded extends PokemonState {
     required this.totalPages,
     required this.totalPokemons,
   });
+}
+
+class PokemonTypesLoaded extends PokemonState {
+  final List<String> types;
+
+  PokemonTypesLoaded(this.types);
 }
 
 class PokemonError extends PokemonState {

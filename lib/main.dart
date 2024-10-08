@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pokemon_app/app/utils/token_storage.dart';
+import 'package:pokemon_app/cubits/pokemon/pokemon_type_cubit.dart';
 import 'package:pokemon_app/pages/captured_pokemons_page.dart';
 import 'package:pokemon_app/pages/login_page.dart';
 import 'package:pokemon_app/pages/pokemon_list_page.dart';
 import 'providers/pokemon_provider.dart';
-import 'cubits/pokemon_cubit.dart';
-import 'cubits/captured_pokemon_cubit.dart';
-import 'cubits/login_cubit.dart';
+import 'cubits/pokemon/pokemon_cubit.dart';
+import 'cubits/pokemon/captured_pokemon_cubit.dart';
+import 'cubits/login/login_cubit.dart';
 import 'providers/login_provider.dart';
 
 void main() {
@@ -38,6 +39,11 @@ class PokeApp extends StatelessWidget {
           ),
           BlocProvider<CapturedPokemonCubit>(
             create: (context) => CapturedPokemonCubit(),
+          ),
+          BlocProvider<PokemonTypeCubit>(
+            create: (context) => PokemonTypeCubit(
+              context.read<PokemonProvider>(),
+            ),
           ),
           BlocProvider<LoginCubit>(
             create: (context) => LoginCubit(
@@ -75,6 +81,7 @@ class PokeApp extends StatelessWidget {
 
             return MaterialApp.router(
               routerConfig: router,
+              debugShowCheckedModeBanner: false,
               theme: ThemeData(
                 primarySwatch: Colors.blue,
                 visualDensity: VisualDensity.adaptivePlatformDensity,

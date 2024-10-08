@@ -13,12 +13,13 @@ class PokemonProvider {
   Future<Map<String, dynamic>> getPokemons(int page,
       {String? name, String? type}) async {
     try {
-      final response = await _dio.get(apiUrl, queryParameters: {
+      final queryParams = {
         'page': page,
         if (name != null) 'name': name,
-        if (type != null) 'type': type,
-      });
+        if (type != null && type.isNotEmpty) 'type': type,
+      };
 
+      final response = await _dio.get(apiUrl, queryParameters: queryParams);
       List<Pokemon> pokemons = (response.data['pokemons'] as List)
           .map((pokemonData) => Pokemon.fromJson(pokemonData))
           .toList();
@@ -35,6 +36,20 @@ class PokemonProvider {
       };
     } catch (e) {
       throw Exception("Error fetching Pokémon: ${e.toString()}");
+    }
+  }
+
+  Future<List<String>> getPokemonTypes() async {
+    try {
+      final response = await _dio.get('$apiUrl/types');
+
+      List<String> types = (response.data as List).map((typeData) {
+        return typeData.toString();
+      }).toList();
+
+      return types;
+    } catch (e) {
+      throw Exception("Error fetching Pokémon types: ${e.toString()}");
     }
   }
 }

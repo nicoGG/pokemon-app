@@ -18,6 +18,19 @@ class CapturedPokemonCubit extends Cubit<List<Pokemon>> {
   }
 
   bool isCaptured(Pokemon pokemon) {
-    return state.contains(pokemon);
+    return state.any((captured) => captured.id == pokemon.id);
+  }
+
+  void releasePokemonById(int id) {
+    state.removeWhere((pokemon) => pokemon.id == id);
+    emit(List.from(state));
+  }
+
+  bool isCapturedById(int id) {
+    return state.any((p) => p.id == id);
+  }
+
+  void releaseAll() {
+    emit([]);
   }
 }
